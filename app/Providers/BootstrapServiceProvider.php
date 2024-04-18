@@ -1,6 +1,6 @@
 <?php
 
-namespace Zevitagem\LaravelToolkitApresentation\Providers;
+namespace Nanicas\LegacyLaravelToolkitView\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

@@ -1,0 +1,41 @@
+#fast-result-box .alert > ul,
+#top-dashboard-message .alert > ul,
+#bottom-dashboard-message .alert > ul {
+    margin-bottom: 0;
+}
+#fast-result-box > .alert {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+#menu-box .feather {
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+}
+#menu-box .direct-menu-item {
+    font-size: 15px;
+}
+#menu-box .card-body {
+    padding: 5px;
+}
+.direct-menu-item-header {
+    padding: 5px;
+}
+#menu-box .feather {
+    vertical-align: text-top;
+}
+#menu-box .btn-link {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+#menu-box .list-group-item a {
+    text-decoration: none;
+}
+#menu-box .list-group-item {
+    padding: 2px;
+}
+#menu-box .list-group-item .card-header {
+    padding: 5px;
+}

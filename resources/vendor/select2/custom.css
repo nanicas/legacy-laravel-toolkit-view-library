@@ -1,0 +1,6 @@
+.select2-container .select2-selection--single {
+    height: 37px;
+}
+.select2-container .select2-selection--single .select2-selection__rendered {
+    padding-top: 3px;
+}

@@ -13,7 +13,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    @vite(['resources/presentation_template/sass/app.scss'])
+    @vite(['resources/sass/app.scss'])
     
     <link href="{{ asset('build/vendor/select2/custom.css') }}" rel="stylesheet">
     <link href="{{ asset($packaged_assets_prefix . '/css/layouts/app.css') }}" rel="stylesheet">
@@ -136,7 +136,7 @@
 </body>
 
 @vite([
-    'resources/presentation_template/js/app.js',
+    'resources/js/app.js',
 ])
 
 <!-- Scripts -->

@@ -89,27 +89,3 @@ export default defineConfig({
     ],
 });
 ```
-
-## Compilar assets
-`npm run build`
-
-```
-> build
-> vite build
-
-vite v4.5.3 building for production...
-✓ 482 modules transformed.
-public/build/manifest.json                         1.04 kB │ gzip:   0.30 kB
-public/build/assets/app-a6b74ef6.css             261.43 kB │ gzip:  35.35 kB
-public/build/assets/purify.es-d6eec8ab.js         21.87 kB │ gzip:   8.69 kB
-public/build/assets/index.es-18e47ed2.js         149.69 kB │ gzip:  51.12 kB
-public/build/assets/html2canvas.esm-e0a7d97b.js  201.43 kB │ gzip:  48.04 kB
-public/build/assets/app-aaa5687b.js              948.88 kB │ gzip: 315.51 kB
-
-(!) Some chunks are larger than 500 kBs after minification. Consider:
-- Using dynamic import() to code-split the application
-- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
-- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
-[vite-plugin-static-copy] Copied 4 items.
-✓ built in 7.17s
-```

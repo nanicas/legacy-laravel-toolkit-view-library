@@ -20,5 +20,5 @@
 @endsection
 
 @section('content')
-    @yield('not-allowed-content', view($view_prefix . 'pages.allowance.not_allowed_content'))
+    @yield('not-allowed-content', view('pages.allowance.not_allowed_content'))
 @endsection

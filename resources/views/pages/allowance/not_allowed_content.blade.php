@@ -6,15 +6,6 @@
         Nos desculpe, um erro ocorreu. Essa requisição não é permitida pelo tipo de seu usuário!
     </div>
 
-    <!--    <form class="form-inline">
-            <div class="form-group">
-                <label for="search">Search</label>
-                <input type="text" class="form-control" id="search" placeholder="Search something else...">
-            </div>
-            <button type="submit" class="btn btn-primary btn-large">Serch</button>
-        </form>-->
-
-
     <div class="error-actions">
         <a href="{{ route(App\Helpers\Helper::cleanRoute(\App\Providers\RouteServiceProvider::HOME)) }}" class="btn btn-primary btn-lg">
             <span class="glyphicon glyphicon-home"></span>

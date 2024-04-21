@@ -1,1 +1,0 @@
-@include($view_prefix . 'pages.historic.form')

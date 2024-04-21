@@ -2,7 +2,7 @@
 @section('dashboard-content')
 
     @if(isset($state))
-        @include($view_prefix . 'layouts.crud.messages-state', ['state' => $state])
+        @include('layouts.crud.messages-state', ['state' => $state])
     @endif
     
     <div id="crud-message">

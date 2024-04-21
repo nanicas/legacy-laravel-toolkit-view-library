@@ -3,7 +3,7 @@
 @endif
 
 @if(isset($state))
-    @include($view_prefix . 'layouts.crud.messages-state', ['state' => $state])
+    @include('layouts.crud.messages-state', ['state' => $state])
 @endif
 
 @if(!isset($status) || $status === true)

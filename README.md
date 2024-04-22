@@ -32,12 +32,22 @@ php artisan vendor:publish --tag="legacy_laravel_toolkit_view_library:views"
 php artisan vendor:publish --tag="legacy_laravel_toolkit_view_library:public"
 ```
 
+## Atualizar bibliotecas internas
+```
+npm install \
+    axios@^1.6.0 \
+    laravel-vite-plugin@^0.8.0 \
+    vite@^4.0.0 --save-dev
+```
+
+```
+npm install vite-plugin-static-copy@^0.17.0
+```
+
 ## Instalar bibliotecas terceiras
 Se você olhar no arquivo https://github.com/nanicas/legacy-laravel-toolkit-view-library/blob/main/resources/js/bootstrap.js, temos várias bibliotecas que precisam existir para que o `build` na etapa posterior funcione. Para isso, precisamos então executar os seguintes comandos:
 
 ```
-npm i vite-plugin-static-copy
-
 npm install \
   jquery \
   jquery-mask-plugin \

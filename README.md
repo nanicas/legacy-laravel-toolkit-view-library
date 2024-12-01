@@ -93,3 +93,37 @@ export default defineConfig({
 });
 
 ```
+
+## Exemplos
+
+### Criar um CRUD do zero
+
+Abaixo, serão listados os arquivos que estarão envolvidos durante a criação de um módulo novo, nesse caso, iremos usar o exemplo de `suppliers` (fornecedores):
+
+```bash
+new file:   app/Handlers/SupplierHandler.php
+new file:   app/Http/Controllers/Pages/SupplierController.php
+new file:   app/Models/Supplier.php
+new file:   app/Repositories/SupplierRepository.php
+new file:   app/Services/SupplierService.php
+new file:   app/Validators/SupplierValidator.php
+new file:   database/migrations/2023_04_04_084932_create_suppliers_table.php
+new file:   public/resources/pages/supplier/create.css
+new file:   public/resources/pages/supplier/create.js
+new file:   public/resources/pages/supplier/form.css
+new file:   public/resources/pages/supplier/form.js
+new file:   public/resources/pages/supplier/index.css
+new file:   public/resources/pages/supplier/index.js
+new file:   public/resources/pages/supplier/list.css
+new file:   public/resources/pages/supplier/list.js
+new file:   public/resources/pages/supplier/show.css
+new file:   public/resources/pages/supplier/show.js
+modified:   resources/views/layouts/dashboard.blade.php
+new file:   resources/views/pages/supplier/create.blade.php
+new file:   resources/views/pages/supplier/form.blade.php
+new file:   resources/views/pages/supplier/index.blade.php
+new file:   resources/views/pages/supplier/list-buttons.blade.php
+new file:   resources/views/pages/supplier/list.blade.php
+new file:   resources/views/pages/supplier/show.blade.php
+modified:   routes/web.php
+```

@@ -55,6 +55,7 @@ Se olharmos no arquivo https://github.com/nanicas/legacy-laravel-toolkit-view-li
 
 ```
 npm install \
+  bootstrap-icons \
   jquery \
   jquery-mask-plugin \
   ladda \
@@ -96,16 +97,41 @@ export default defineConfig({
                     src: 'resources/vendor/legacy_laravel_toolkit_view_library/vendor/select2/custom.css',
                     dest: 'vendor/select2'
                 },
-                {
-                    src: 'resources/vendor/legacy_laravel_toolkit_view_library/vendor/bootstrap-theme/feather.min.js',
-                    dest: 'vendor/bootstrap-theme'
-                },
+                // {
+                //     src: 'resources/vendor/legacy_laravel_toolkit_view_library/vendor/bootstrap-theme/feather.min.js',
+                //     dest: 'vendor/bootstrap-theme'
+                // },
             ]
         })
     ],
 });
 
 ```
+
+## Observações
+
+### Antes de invocar uma View estrutural
+Antes de chamar qualquer `view` que dependa da estrutura básica de layout, tenha certeza de que o método `beforeView` do controller **base/herdado** está sendo chamado também, exemplo:
+
+```php
+/**
+ * Show the application's login form.
+ *
+ * @return \Illuminate\View\View
+ */
+public function showLoginForm()
+{
+    parent::beforeView(request());
+
+    return view('auth.login');
+}
+```
+
+Existem várias variáveis e comportamentos que precisam ser compartilhada/os com uma view estrutural, por isso na necessidade da chamada, referências:
+
+- https://github.com/nanicas/legacy-laravel-toolkit-library/blob/main/app/Http/Controllers/Controller.php#L50
+- https://github.com/nanicas/legacy-laravel-toolkit-library/blob/main/app/Http/Controllers/CrudController.php#L82
+- https://github.com/nanicas/legacy-laravel-toolkit-library/blob/main/app/Http/Controllers/DashboardController.php#L41
 
 ## Exemplos
 
@@ -140,3 +166,5 @@ new file:   resources/views/pages/supplier/list.blade.php
 new file:   resources/views/pages/supplier/show.blade.php
 modified:   routes/web.php
 ```
+
+- Pendência: criar uma pasta contendo todos os arquivos, mantendo a estrutura da árvore.

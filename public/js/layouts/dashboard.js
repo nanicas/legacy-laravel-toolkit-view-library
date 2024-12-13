@@ -9,9 +9,11 @@ var DASHBOARD = (function () {
             personalizedConfig = {}
         }
 
-        var config = {...{
-                    isModal: true
-            }, personalizedConfig};
+        var config = {
+            ...{
+                isModal: true
+            }, personalizedConfig
+        };
 
         HELPER.behaviorOnSubmitNoForm(clicked, data, function (serverResponse) {
             if (config.isModal) {
@@ -98,7 +100,7 @@ var DASHBOARD = (function () {
     function load() {
 
         APP.load();
-        APP.replaceIcons();
+        // APP.replaceIcons();
 
         state.fastModal = $('#fast-modal');
         state.fastModalBootstrap = new bootstrap.Modal(state.fastModal.get(0));
@@ -121,9 +123,9 @@ var DASHBOARD = (function () {
             });
         });
 
-//        state.fastModal.on('show.bs.modal', function () {
-//            alert('hixx');
-//        })
+        //        state.fastModal.on('show.bs.modal', function () {
+        //            alert('hixx');
+        //        })
 
         var pureFastModal = document.getElementById('fast-modal');
         pureFastModal.addEventListener('show.bs.modal', function (event) {

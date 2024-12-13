@@ -53,7 +53,7 @@ var LIST_CRUD = (function () {
             language: languagePTDatatable,
             columns: config.columns,
             drawCallback: function (settings) {
-                APP.replaceIcons();
+                // APP.replaceIcons();
             }
         }).on('error.dt', function (e, settings, techNote, message) {
             console.log('An error has been reported by DataTables: ', {e, settings, techNote, message});

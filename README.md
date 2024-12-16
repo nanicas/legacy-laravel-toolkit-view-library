@@ -37,21 +37,13 @@ php artisan vendor:publish --tag="legacy_laravel_toolkit_view_library:views"
 php artisan vendor:publish --tag="legacy_laravel_toolkit_view_library:public"
 ```
 
-## Instalar bibliotecas complementares
-
-Node:
-```
-npm install vite-plugin-static-copy@^0.17.0
-```
-
-PHP:
-```
-composer require yajra/laravel-datatables:^10.0
-```
-
 ## Instalar bibliotecas terceiras
 
 Se olharmos no arquivo https://github.com/nanicas/legacy-laravel-toolkit-view-library/blob/main/resources/js/bootstrap.js, temos várias bibliotecas que precisam existir para que o `build` na etapa posterior funcione. Para isso, precisamos então executar os seguintes comandos:
+
+```
+npm install vite-plugin-static-copy@^0.17.0
+```
 
 ```
 npm install \
@@ -65,6 +57,17 @@ npm install \
   jspdf \
   datatables.net-bs5 \
   datatables.net-plugins
+```
+
+### Bibliotecas complementares
+
+**PHP**:
+```
+composer require yajra/laravel-datatables:^10.0
+```
+
+```
+php artisan vendor:publish --tag=datatables
 ```
 
 ## Configurar vite para copiar assets globais

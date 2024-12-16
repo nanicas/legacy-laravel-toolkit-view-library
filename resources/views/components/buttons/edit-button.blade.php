@@ -1,3 +1,3 @@
 <a class="btn btn-info btn-sm" href="{{ $route }}">
-    <span data-feather="edit"></span>
+    <i class="bi bi-pencil-square"></i>
 </a>

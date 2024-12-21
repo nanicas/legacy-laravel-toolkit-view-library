@@ -171,3 +171,36 @@ modified:   routes/web.php
 ```
 
 - Pendência: criar uma pasta contendo todos os arquivos, mantendo a estrutura da árvore.
+
+### Personalizar lista de pesquisa
+
+Basta adicionar uma função de callback no objeto global `DASHBOARD`, exemplo:
+
+```js
+DASHBOARD.callbacks.eachSearchItem = function (row, element) {
+    element.append(`\
+        <li>
+            <a class="dropdown-item">
+                <div>${row}</div>
+            </a>
+        </li>`);
+};
+```
+
+Exemplo de resposta durante a pesquisa no servidor:
+
+URL: `GET /dashboard/search?query=teste`
+
+```json
+{
+    "response": {
+        "result": [
+            "user x",
+            "user y",
+            "user z"
+        ],
+        "message": "<div class=\"alert alert-success\">\n Ação executada com sucesso!\n</div>"
+    },
+    "status": true
+}
+```

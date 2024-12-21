@@ -102,6 +102,7 @@ var DASHBOARD = (function () {
         APP.load();
         // APP.replaceIcons();
 
+        state.navbarHeader = $('#navbar-header');
         state.fastModal = $('#fast-modal');
         state.fastModalBootstrap = new bootstrap.Modal(state.fastModal.get(0));
         state.fastTitleModal = $('.modal-title', state.fastModal);
@@ -123,10 +124,6 @@ var DASHBOARD = (function () {
             });
         });
 
-        //        state.fastModal.on('show.bs.modal', function () {
-        //            alert('hixx');
-        //        })
-
         var pureFastModal = document.getElementById('fast-modal');
         pureFastModal.addEventListener('show.bs.modal', function (event) {
             state.fastResultBox.html('');
@@ -146,6 +143,8 @@ var DASHBOARD = (function () {
 
         let resizeEvent = new Event('resize');
         window.dispatchEvent(resizeEvent);
+
+        onSearch();
     }
 
     function beforeSetMessage(element) {
@@ -183,6 +182,77 @@ var DASHBOARD = (function () {
             state.bottomMessageElement,
             (typeof config != 'object') ? {} : config
         );
+    }
+
+    function onSearch() {
+        const searchInput = $('#search-input', state.navbarHeader);
+        const searchButton = $('#search-button', state.navbarHeader);
+        const searchDropdown = $('#search-dropdown', state.navbarHeader);
+        const resultsDropdown = $('#search-dropdown-menu', state.navbarHeader);
+
+        if (!searchInput.length) {
+            return;
+        }
+
+        var dropdown = new bootstrap.Dropdown(searchDropdown.get(0));
+
+        searchButton.on('click', function () {
+
+            const query = searchInput.val().trim();
+            if (!query) return;
+
+            resultsDropdown.empty();
+            dropdown.show();
+            resultsDropdown.append('<li><span class="dropdown-item text-muted">Buscando dados ...</span></li>');
+
+            $.ajax({
+                url: searchButton.data('route'),
+                type: 'GET',
+                dataType: 'JSON',
+                data: {
+                    query: query
+                },
+                success: function (data) {
+                    resultsDropdown.empty();
+
+                    if (!data.status) {
+                        resultsDropdown.append('<li><span class="dropdown-item text-danger">' + data.response.message + '</span></li>');
+                    } else {
+                        if (data.response.result && data.response.result.length > 0) {
+                            data.response.result.forEach(row => {
+                                if (typeof DASHBOARD.callbacks.eachSearchItem == 'function') {
+                                    DASHBOARD.callbacks.eachSearchItem(row, resultsDropdown);
+                                } else {
+                                    resultsDropdown.append(`
+                                        <li>
+                                            <a class="dropdown-item" href="${row.url}">
+                                                <div>${row.name}</div>
+                                            </a>
+                                        </li>`);
+                                }
+                            });
+                        } else {
+                            resultsDropdown.append('<li><span class="dropdown-item text-muted">Nenhum resultado encontrado</span></li>');
+                        }
+                    }
+                },
+                error: function () {
+                    resultsDropdown.append('<li><span class="dropdown-item text-muted">Ocorreu um erro ao buscar os dados</span></li>');
+                },
+            })
+        });
+
+        $('#clear-search-button', state.navbarHeader).on('click', function () {
+            searchInput.val('');
+            resultsDropdown.empty();
+            dropdown.hide();
+        });
+
+        $(document).on('click', function (e) {
+            if (!$(e.target).closest('#navbar-header').length) {
+                dropdown.hide();
+            }
+        });
     }
 
     return {

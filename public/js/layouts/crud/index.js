@@ -4,8 +4,12 @@ var INDEX_CRUD = (function () {
 
     function load() {
 
-        DASHBOARD.load();
+        if (typeof DASHBOARD_BUSINESS !== 'undefined') {
+            DASHBOARD_BUSINESS.load();
+        } else {
+            DASHBOARD.load();
+        }
     }
 
-    return {load};
+    return { load };
 })();

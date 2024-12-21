@@ -8,7 +8,7 @@ var CRUD_FORM = (function () {
         }
 
         var hasPropertyWrapped = data.response.hasOwnProperty('wrapped');
-        
+
         if (!hasPropertyWrapped || data.response.wrapped == true) {
             DASHBOARD.setTopMessage(data.response.message);
         } else {
@@ -16,13 +16,17 @@ var CRUD_FORM = (function () {
                 APP.convertMessageToAlert(data.response.message, 'danger')
             );
         }
-        
+
         //state.formResultBox.html(data.response.message);
     }
 
     function load() {
 
-        DASHBOARD.load();
+        if (typeof DASHBOARD_BUSINESS !== 'undefined') {
+            DASHBOARD_BUSINESS.load();
+        } else {
+            DASHBOARD.load();
+        }
 
         state.crudForm = $('#crud-form');
         //state.formResultBox = $('#form-result-box');
@@ -36,5 +40,5 @@ var CRUD_FORM = (function () {
         });
     }
 
-    return {load, state, behaviorOnSubmitFinish};
+    return { load, state, behaviorOnSubmitFinish };
 })();

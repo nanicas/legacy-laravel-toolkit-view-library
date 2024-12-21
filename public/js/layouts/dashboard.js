@@ -212,9 +212,10 @@ var DASHBOARD = (function () {
                 data: {
                     query: query
                 },
-                success: function (data) {
+                complete: function () {
                     resultsDropdown.empty();
-
+                },
+                success: function (data) {
                     if (!data.status) {
                         resultsDropdown.append('<li><span class="dropdown-item text-danger">' + data.response.message + '</span></li>');
                     } else {

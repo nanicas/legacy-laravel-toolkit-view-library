@@ -212,10 +212,9 @@ var DASHBOARD = (function () {
                 data: {
                     query: query
                 },
-                complete: function () {
-                    resultsDropdown.empty();
-                },
                 success: function (data) {
+                    resultsDropdown.empty();
+
                     if (!data.status) {
                         resultsDropdown.append('<li><span class="dropdown-item text-danger">' + data.response.message + '</span></li>');
                     } else {
@@ -238,6 +237,7 @@ var DASHBOARD = (function () {
                     }
                 },
                 error: function () {
+                    resultsDropdown.empty();
                     resultsDropdown.append('<li><span class="dropdown-item text-muted">Ocorreu um erro ao buscar os dados</span></li>');
                 },
             })

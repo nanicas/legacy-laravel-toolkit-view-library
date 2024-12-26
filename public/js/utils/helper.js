@@ -20,7 +20,7 @@ var HELPER = (function () {
             }
         };
 
-        return {SPMaskBehavior, spOptions};
+        return { SPMaskBehavior, spOptions };
     }
 
     /**
@@ -58,19 +58,19 @@ var HELPER = (function () {
 
         var dateAsString = year + '-' + month + '-' + day;
 
-        return {dateObject, dateAsString};
+        return { dateObject, dateAsString };
     }
-    
+
     function behaviorOnSubmitNoForm(clicked, data, callback) {
         if (typeof (data) == 'undefined') {
             data = {}
         }
 
         var ladda = Ladda.create(clicked.get(0));
-            ladda.start();
+        ladda.start();
 
         var url = clicked.data('route'),
-                method = clicked.data('method');
+            method = clicked.data('method');
 
         $.ajax({
             headers: {
@@ -97,7 +97,7 @@ var HELPER = (function () {
         });
     }
 
-    function behaviorOnSubmit(e, form, callback) {
+    function behaviorOnSubmit(e, form, callback, data) {
 
         if (e) {
             e.stopPropagation();
@@ -105,8 +105,12 @@ var HELPER = (function () {
         }
 
         var self = form,
-                button = self.find('button[type="submit"]'),
-                ladda = Ladda.create(button.get(0));
+            button = self.find('button[type="submit"]'),
+            ladda = Ladda.create(button.get(0));
+
+        if (typeof data == 'undefined') {
+            data = new FormData(self[0]);
+        }
 
         ladda.start();
 
@@ -116,7 +120,7 @@ var HELPER = (function () {
             },
             url: self.attr('action'),
             type: self.attr('method'),
-            data: new FormData(self[0]),
+            data: data,
             processData: false,
             contentType: false,
             dataType: 'JSON',

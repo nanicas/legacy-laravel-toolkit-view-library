@@ -101,13 +101,16 @@
                             <div class="nav-item dropdown text-end">
                                 <a role="button" href="#" aria-expanded="false"
                                     class="nav-link d-block text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
-                                    <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32"
-                                        class="rounded-circle"> {{ \App\Helpers\Helper::getUserName(false) }}
+                                    <i class="bi bi-person-bounding-box align-middle me-2" style="font-size: 35px"></i>
+                                    {{ \App\Helpers\Helper::getUserName(false) }}
                                 </a>
                                 <ul class="dropdown-menu text-small" data-popper-placement="bottom-start">
-                                    <li><a class="dropdown-item" href="#">New project...</a></li>
-                                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                                    @if ($template_config['frontend']['header']['navbar']['user']['has_profile'])
+                                        <li>
+                                            <a class="dropdown-item"
+                                                href="{{ route($template_config['frontend']['header']['navbar']['user']['profile_route'], \App\Helpers\Helper::getUser()->id) }}">Perfil</a>
+                                        </li>
+                                    @endif
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>

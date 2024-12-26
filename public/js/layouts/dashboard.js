@@ -73,6 +73,20 @@ var DASHBOARD = (function () {
         state.fastModalBootstrap._config.keyboard = false;
     }
 
+    function setSizeModal(newSize) {
+        const prefix = 'modal-';
+        const sizes = ['sm', 'lg', 'xl'];
+        const element = state.fastModal.find('.modal-dialog');
+
+        sizes.forEach(size => {
+            element.removeClass(prefix + size);
+        });
+
+        if (newSize) {
+            element.addClass(prefix + newSize);
+        }
+    }
+
     function loadModal(url, callback) {
         state.fastBodyModal.html('Aguarde um momento, por gentileza ...');
         showModal();
@@ -124,10 +138,13 @@ var DASHBOARD = (function () {
             });
         });
 
-        var pureFastModal = document.getElementById('fast-modal');
-        pureFastModal.addEventListener('show.bs.modal', function (event) {
+        state.fastModal.on('show.bs.modal', event => {
             state.fastResultBox.html('');
         });
+
+        state.fastModal.on('hidden.bs.modal', event => {
+            setSizeModal();
+        })
 
         window.addEventListener('resize', event => {
             if (window.innerWidth <= 768) {
@@ -232,13 +249,13 @@ var DASHBOARD = (function () {
                                 }
                             });
                         } else {
-                            resultsDropdown.append('<li><span class="dropdown-item text-muted">Nenhum resultado encontrado</span></li>');
+                            resultsDropdown.append('<li><span class="dropdown-item text-danger">Nenhum resultado encontrado</span></li>');
                         }
                     }
                 },
                 error: function () {
                     resultsDropdown.empty();
-                    resultsDropdown.append('<li><span class="dropdown-item text-muted">Ocorreu um erro ao buscar os dados</span></li>');
+                    resultsDropdown.append('<li><span class="dropdown-item text-danger">Ocorreu um erro ao buscar os dados</span></li>');
                 },
             })
         });
@@ -261,6 +278,7 @@ var DASHBOARD = (function () {
         load,
         setTopMessage,
         setBottomMessage,
+        setSizeModal,
         loadModal,
         hideModal,
         saveModal,

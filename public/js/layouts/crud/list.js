@@ -6,7 +6,7 @@ var LIST_CRUD = (function () {
 
         state.datatable = null;
         state.crudListBox = $('#crud-list');
-        state.table = $('table', state.crudListBox);
+        state.table = $('table.main', state.crudListBox);
 
         state.table.on('submit', '.delete-form', function (e) {
             var tr = $(this).parents('tr');
@@ -25,15 +25,14 @@ var LIST_CRUD = (function () {
                 }
 
                 state.datatable
-                        .row(tr)
-                        .remove()
-                        .draw();
+                    .row(tr)
+                    .remove()
+                    .draw();
             });
         });
     }
 
     function initTable(config) {
-
         if (typeof (config.table) == 'undefined') {
             config.table = state.table;
         }
@@ -43,7 +42,7 @@ var LIST_CRUD = (function () {
 
         $.fn.dataTable.ext.errMode = 'none';
 
-        state.datatable = state.table.DataTable({
+        state.datatable = config.table.DataTable({
             order: [[0, 'desc']],
             processing: true,
             paging: true,
@@ -56,7 +55,7 @@ var LIST_CRUD = (function () {
                 // APP.replaceIcons();
             }
         }).on('error.dt', function (e, settings, techNote, message) {
-            console.log('An error has been reported by DataTables: ', {e, settings, techNote, message});
+            console.log('An error has been reported by DataTables: ', { e, settings, techNote, message });
 
             message = APP.convertMessageToAlert(
                 'Ocorreu um problema durante a renderização da tabela, tente recarregar a página.',
@@ -67,5 +66,5 @@ var LIST_CRUD = (function () {
         });
     }
 
-    return {load, initTable, state};
+    return { load, initTable, state };
 })();

@@ -61,6 +61,46 @@ var HELPER = (function () {
         return { dateObject, dateAsString };
     }
 
+    function copyToClipboard(textToCopy) {
+
+        // Navigator clipboard api needs a secure context (https)
+        if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(textToCopy);
+        }
+
+        return new Promise((resolve, reject) => {
+
+            console.log('Fallback: Copy to clipboard', textToCopy);
+            // Use the 'out of viewport hidden text area' trick
+            const textArea = document.createElement("textarea");
+            textArea.value = textToCopy;
+
+            // Move textarea out of the viewport so it's not visible
+            textArea.style.position = "absolute";
+            textArea.style.left = "-999999px";
+
+            document.body.prepend(textArea);
+
+            textArea.select();
+
+            try {
+                const success = document.execCommand('copy');
+                if (!success) {
+                    console.error("Fail to copy text with execCommand");
+                } else {
+                    console.log("Text copied to clipboard");
+                }
+
+                resolve();
+            } catch (error) {
+                console.error(error);
+                reject();
+            } finally {
+                textArea.remove();
+            }
+        });
+    }
+
     function behaviorOnSubmitNoForm(clicked, data, callback) {
         if (typeof (data) == 'undefined') {
             data = {}
@@ -142,6 +182,7 @@ var HELPER = (function () {
     }
 
     return {
+        copyToClipboard,
         behaviorOnSubmit,
         behaviorOnSubmitNoForm,
         nl2br,

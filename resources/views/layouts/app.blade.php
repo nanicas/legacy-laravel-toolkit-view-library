@@ -30,11 +30,6 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm" id="navbar-header">
             <div class="container">
                 @yield('app_logo', View::make('components.app_logo'))
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
                 @auth
                     @if ($template_config['frontend']['header']['search']['has'])
@@ -65,19 +60,19 @@
                     @endif
                 @endauth
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto"></ul>
+                <div class="collapse navbar-collapse align-items-center d-flex justify-content-center">
 
                     @php $currentRouteName = Route::currentRouteName(); @endphp
+
+                    @if (Route::has('site') && $currentRouteName != 'site')
+                        <a class="text-decoration-none text-light" href="{{ route('site') }}">
+                            Site <i class="bi bi-globe-americas"></i>
+                        </a>
+                    @endif
+
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto ">
                         <!-- Authentication Links -->
-                        @if (Route::has('site') && $currentRouteName != 'site')
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('site') }}">Site</a>
-                            </li>
-                        @endif
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -108,16 +103,18 @@
                                     @if ($template_config['frontend']['header']['navbar']['user']['has_profile'])
                                         <li>
                                             <a class="dropdown-item"
-                                                href="{{ route($template_config['frontend']['header']['navbar']['user']['profile_route'], \App\Helpers\Helper::getUser()->id) }}">Perfil</a>
+                                                href="{{ route($template_config['frontend']['header']['navbar']['user']['profile_route'], \App\Helpers\Helper::getUser()->id) }}">
+                                                <i class="bi bi-person-circle"></i> Perfil
+                                            </a>
                                         </li>
                                     @endif
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                        <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            Sair
+                                            <i class="bi bi-door-closed"></i> Sair
                                         </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                             class="d-none">

@@ -52,6 +52,14 @@ var DASHBOARD = (function () {
         });
     }
 
+    function setFastResultModal(data) {
+        state.fastResultBox.html(data);
+    }
+
+    function setModalTitle(title) {
+        state.fastTitleModal.html(title);
+    }
+
     function hideModal() {
         state.fastModalBootstrap.hide();
     }
@@ -144,6 +152,7 @@ var DASHBOARD = (function () {
 
         state.fastModal.on('hidden.bs.modal', event => {
             setSizeModal();
+            setModalTitle('');
         })
 
         window.addEventListener('resize', event => {
@@ -277,8 +286,10 @@ var DASHBOARD = (function () {
         state,
         load,
         setTopMessage,
+        setFastResultModal,
         setBottomMessage,
         setSizeModal,
+        setModalTitle,
         loadModal,
         hideModal,
         saveModal,

@@ -18,3 +18,45 @@
 
 //Select2
 @import 'select2/dist/css/select2.css';
+
+// Extra Bootstrap's colors
+// @doc: https://getbootstrap.com/docs/5.3/utilities/background/#sass-variables
+.bg-pink {
+    background-color: $pink !important;
+}
+
+.bg-indigo {
+    background-color: $indigo !important;
+}
+
+.bg-purple {
+    background-color: $purple !important;
+}
+
+.bg-blue {
+    background-color: $blue !important;
+}
+
+.bg-red {
+    background-color: $red !important;
+}
+
+.bg-orange {
+    background-color: $orange !important;
+}
+
+.bg-yellow {
+    background-color: $yellow !important;
+}
+
+.bg-green {
+    background-color: $green !important;
+}
+
+.bg-teal {
+    background-color: $teal !important;
+}
+
+.bg-cyan {
+    background-color: $cyan !important;
+}

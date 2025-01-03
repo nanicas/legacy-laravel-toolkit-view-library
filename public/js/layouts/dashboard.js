@@ -135,6 +135,19 @@ var DASHBOARD = (function () {
         state.topMessageElement = $('#top-dashboard-message');
         state.bottomMessageElement = $('#bottom-dashboard-message');
         state.changeScopeForm = $('form#change-scope');
+        state.reloadPageElement = $('.reload-page');
+
+        state.reloadPageElement.click(function (e) {
+            e.preventDefault();
+
+            let clicked = $(this);
+            if (clicked.hasClass('ladda-button')) {
+                var ladda = Ladda.create(clicked.get(0));
+                ladda.start();
+            }
+
+            window.location.reload();
+        });
 
         state.changeScopeForm.submit(function (e) {
             HELPER.behaviorOnSubmit(e, $(this), function (data) {

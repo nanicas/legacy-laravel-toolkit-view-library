@@ -66,7 +66,7 @@
 
                     @if (Route::has('site') && $currentRouteName != 'site')
                         <a class="text-decoration-none text-light" href="{{ route('site') }}">
-                            Site <i class="bi bi-globe-americas"></i>
+                            <i class="bi bi-globe-americas"></i>
                         </a>
                     @endif
 

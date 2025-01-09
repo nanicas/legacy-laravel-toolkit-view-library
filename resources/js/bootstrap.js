@@ -24,6 +24,9 @@ select2(window, $);
 import { jsPDF } from "jspdf";
 window.jsPDF = jsPDF;
 
+import moment from 'moment-timezone';
+window.moment = moment;
+
 import DataTable from 'datatables.net-bs5';
 import languagePTDatatable from 'datatables.net-plugins/i18n/pt-BR.mjs';
 window.languagePTDatatable = languagePTDatatable

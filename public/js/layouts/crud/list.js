@@ -25,6 +25,7 @@ var LIST_CRUD = (function () {
         state.datatable[config.name] = config.table.DataTable({
             order: [[0, 'desc']],
             processing: true,
+            searching: (typeof (config.searching) == 'undefined') ? true : config.searching,
             paging: true,
             serverSide: true,
             searchDelay: 1500,

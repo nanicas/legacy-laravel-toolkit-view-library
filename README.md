@@ -47,6 +47,7 @@ npm install vite-plugin-static-copy@^0.17.0
 
 ```
 npm install \
+  moment-timezone \
   bootstrap-icons \
   jquery \
   jquery-mask-plugin \

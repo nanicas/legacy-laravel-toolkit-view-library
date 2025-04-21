@@ -7,7 +7,7 @@
             <a href="{{ route('home') }}">
                 <div class="card">
                     <div class="card-header">
-                        <span data-feather="star"></span>
+                        <i class="bi bi-star"></i>
                         <label role="button">Página inicial</label>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                 @endphp
                 <div class="card-header" id="heading-example-a-menu">
                     <button class="btn btn-link collapsed text-decoration-none" data-bs-toggle="collapse" data-bs-target="#collapse-example-a-menu" aria-expanded="{{ ($isExampleScreenAbout) ? 'true' : 'false' }}" aria-controls="collapse-example-a-menu">
-                        <span data-feather="trello"></span>
+                        <i class="bi bi-trello"></i>
                         <label role="button">Consultas</label>
                     </button>
                 </div>
@@ -34,7 +34,7 @@
                     <div class="card-body">
                         <div class="list-group">
                             <a class="list-group-item list-group-item-action {{ ($isExampleScreenAbout && $screen == 'example-a') ? 'active' : '' }}" href="#">
-                                <span data-feather="map-pin"></span>
+                                <i class="bi bi-geo-alt"></i>
                                 Example A
                             </a>
                         </div>

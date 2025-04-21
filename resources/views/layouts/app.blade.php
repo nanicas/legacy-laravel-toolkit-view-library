@@ -73,7 +73,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto ">
                         <!-- Authentication Links -->
-                        @guest
+                        @if (!Helper::isAnyGuardAuthenticated())
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -95,7 +95,8 @@
 
                             <div class="nav-item dropdown text-end">
                                 <a role="button" href="#" aria-expanded="false"
-                                    class="nav-link d-block text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
+                                    class="nav-link d-block text-decoration-none dropdown-toggle"
+                                    data-bs-toggle="dropdown">
                                     <i class="bi bi-person-bounding-box align-middle me-2" style="font-size: 35px"></i>
                                     {{ \App\Helpers\Helper::getUserName(false) }}
                                 </a>
@@ -141,7 +142,7 @@
                                     </form>
                                 </div>
                             </li> --}}
-                        @endguest
+                        @endif
                     </ul>
                 </div>
             </div>

@@ -1,1 +1,1 @@
-@extends($view_prefix . 'layouts.crud.list')
+@extends($packaged_view_prefix . 'layouts.crud.list')

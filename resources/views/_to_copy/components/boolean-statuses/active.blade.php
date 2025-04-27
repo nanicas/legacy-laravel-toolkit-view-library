@@ -1,1 +1,1 @@
-@extends($view_prefix . 'components.boolean-statuses.active', ['active' => $active])
+@extends($packaged_view_prefix . 'components.boolean-statuses.active', ['active' => $active])

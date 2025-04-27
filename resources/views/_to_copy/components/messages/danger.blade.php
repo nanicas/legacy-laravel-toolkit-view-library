@@ -1,1 +1,1 @@
-@extends($view_prefix . 'components.messages.danger')
+@extends($packaged_view_prefix . 'components.messages.danger')

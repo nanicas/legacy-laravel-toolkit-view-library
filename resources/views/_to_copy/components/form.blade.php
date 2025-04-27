@@ -1,1 +1,1 @@
-@extends($view_prefix . 'components.form')
+@extends($packaged_view_prefix . 'components.form')

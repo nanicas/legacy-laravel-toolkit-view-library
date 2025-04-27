@@ -1,1 +1,1 @@
-@extends($view_prefix . 'components.boolean-statuses.approved', ['approved' => $approved])
+@extends($packaged_view_prefix . 'components.boolean-statuses.approved', ['approved' => $approved])

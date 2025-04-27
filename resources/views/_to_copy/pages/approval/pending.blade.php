@@ -1,1 +1,1 @@
-@extends($view_prefix . 'pages.approval.pending')
+@extends($packaged_view_prefix . 'pages.approval.pending')

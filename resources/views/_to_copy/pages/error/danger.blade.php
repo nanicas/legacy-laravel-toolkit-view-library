@@ -1,1 +1,1 @@
-@extends($view_prefix . 'pages.error.danger')
+@extends($packaged_view_prefix . 'pages.error.danger')

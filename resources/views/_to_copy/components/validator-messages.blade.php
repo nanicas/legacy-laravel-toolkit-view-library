@@ -1,1 +1,1 @@
-@extends($view_prefix . 'components.validator-messages')
+@extends($packaged_view_prefix . 'components.validator-messages')

@@ -1,1 +1,1 @@
-@extends($view_prefix . 'layouts.crud.form')
+@extends($packaged_view_prefix . 'layouts.crud.form')

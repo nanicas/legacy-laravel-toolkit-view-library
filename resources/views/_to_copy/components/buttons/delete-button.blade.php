@@ -1,1 +1,1 @@
-@extends($view_prefix . 'components.buttons.delete-button']
+@extends($packaged_view_prefix . 'components.buttons.delete-button']

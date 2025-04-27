@@ -4,7 +4,7 @@ namespace Nanicas\LegacyLaravelToolkitView\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class BootstrapServiceProvider extends ServiceProvider
+class AppServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.

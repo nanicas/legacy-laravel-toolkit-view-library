@@ -25,7 +25,7 @@ import '../vendor/legacy_laravel_toolkit_view_library/js/bootstrap';
 Edite o arquivo `<app_name>/config/app.php` e adicione a linha:
 ```
 'providers' => [
-    \Nanicas\LegacyLaravelToolkitView\Providers\BootstrapServiceProvider::class,
+    \Nanicas\LegacyLaravelToolkitView\Providers\AppServiceProvider::class,
 ]
 ```
 

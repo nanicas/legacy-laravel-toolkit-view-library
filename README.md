@@ -39,8 +39,9 @@ php artisan vendor:publish --tag="legacy_laravel_toolkit_view_library:public"
 
 ## Instalar bibliotecas terceiras
 
-Se olharmos no arquivo https://github.com/nanicas/legacy-laravel-toolkit-view-library/blob/main/resources/js/bootstrap.js, temos várias bibliotecas que precisam existir para que o `build` na etapa posterior funcione. Para isso, precisamos então executar os seguintes comandos:
+Se olharmos o arquivo https://github.com/nanicas/legacy-laravel-toolkit-view-library/blob/main/resources/js/bootstrap.js, temos várias bibliotecas que precisam existir para que o `build` na etapa posterior funcione. Para isso, precisamos então executar os seguintes comandos:
 
+**JS - Node Modules**:
 ```
 npm install vite-plugin-static-copy@^0.17.0
 ```
@@ -60,9 +61,7 @@ npm install \
   datatables.net-plugins
 ```
 
-### Bibliotecas complementares
-
-**PHP**:
+**PHP - Composer**:
 ```
 composer require yajra/laravel-datatables:^10.0
 ```
@@ -71,7 +70,7 @@ composer require yajra/laravel-datatables:^10.0
 php artisan vendor:publish --tag=datatables
 ```
 
-## Configurar vite para copiar assets globais
+## Configurar o Vite para copiar os assets globais
 
 ```
 import { defineConfig } from 'vite';
@@ -100,17 +99,46 @@ export default defineConfig({
                 {
                     src: 'resources/vendor/legacy_laravel_toolkit_view_library/vendor/select2/custom.css',
                     dest: 'vendor/select2'
-                },
-                // {
-                //     src: 'resources/vendor/legacy_laravel_toolkit_view_library/vendor/bootstrap-theme/feather.min.js',
-                //     dest: 'vendor/bootstrap-theme'
-                // },
+                }
             ]
         })
     ],
 });
 
 ```
+
+## Buildar os assets
+```
+npm run build
+```
+
+A saída deve ser algo similar:
+```
+> build
+> vite build
+
+vite v4.5.3 building for production...
+✓ 491 modules transformed.
+public/build/manifest.json                              1.44 kB │ gzip:   0.36 kB
+public/build/assets/bootstrap-icons-476adf42.woff2    130.40 kB
+public/build/assets/bootstrap-icons-bb1de989.woff     176.03 kB
+public/build/assets/app-9db8a062.css                  340.61 kB │ gzip:  49.83 kB
+public/build/assets/purify.es-2de9db7f.js              21.98 kB │ gzip:   8.74 kB
+public/build/assets/index.es-2bde8445.js              149.69 kB │ gzip:  51.12 kB
+public/build/assets/html2canvas.esm-e0a7d97b.js       201.43 kB │ gzip:  48.04 kB
+public/build/assets/app-a8d26880.js                 1,754.44 kB │ gzip: 379.47 kB
+
+(!) Some chunks are larger than 500 kBs after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[vite-plugin-static-copy] Copied 3 items.
+✓ built in 8.50s
+```
+
+## Ícones
+Por ora, a biblioteca configurada para lidar com os ícones é o Bootstrap Icons, sendo:
+https://icons.getbootstrap.com
 
 ## Observações
 
@@ -131,7 +159,7 @@ public function showLoginForm()
 }
 ```
 
-Existem várias variáveis e comportamentos que precisam ser compartilhada/os com uma view estrutural, por isso na necessidade da chamada, referências:
+Existem várias variáveis e comportamentos que precisam ser compartilhada/os com uma view estrutural, por isso a necessidade da chamada, segue as referências:
 
 - https://github.com/nanicas/legacy-laravel-toolkit-library/blob/main/app/Http/Controllers/Controller.php#L50
 - https://github.com/nanicas/legacy-laravel-toolkit-library/blob/main/app/Http/Controllers/CrudController.php#L82
@@ -141,7 +169,7 @@ Existem várias variáveis e comportamentos que precisam ser compartilhada/os co
 
 ### Criar um CRUD do zero
 
-Abaixo, serão listados os arquivos que estarão envolvidos durante a criação de um módulo novo, nesse caso, iremos usar o exemplo de `suppliers` (fornecedores):
+Abaixo, serão listados os arquivos que estarão envolvidos durante a criação de um módulo novo, nesse caso, iremos usar o exemplo de `Suppliers` (fornecedores):
 
 ```bash
 new file:   app/Handlers/SupplierHandler.php
@@ -171,7 +199,7 @@ new file:   resources/views/pages/supplier/show.blade.php
 modified:   routes/web.php
 ```
 
-- Pendência: criar uma pasta contendo todos os arquivos, mantendo a estrutura da árvore.
+- Pendência: criar uma pasta contendo todos os arquivos envolvidos acima, mantendo a estrutura da árvore, de forma automática e dinâmica.
 
 ### Personalizar lista de pesquisa
 
